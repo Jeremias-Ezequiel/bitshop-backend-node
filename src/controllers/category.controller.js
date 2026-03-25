@@ -13,6 +13,24 @@ class CategoryController{
             res.status(400).json({status: 'error', message: err.message});
         }
     }
+
+    getAll = async(req, res) => {
+        try{
+            const categories = await service.getAllCategories();
+            res.status(200).json({status: 'successfull',data: categories});
+        }catch(err){
+            res.status(400).json({status: 'error', message: err.message}); 
+        }
+    }
+
+    update = async (req,res) =>{
+        try{
+            const result = await service.updateCategory(req.params.name, req.body.name);
+            res.status(200).json({status: 'successfully', data: result})
+        }catch(err){
+            res.status(400).json({status: 'error', message: err.message})
+        }
+    }
 }
 
 export default new CategoryController();

@@ -3,11 +3,8 @@ import controller from '../controllers/category.controller.js';
 
 const router = Router();
 
-router.get("/", (req,res) => {
-    res.json({message: "Hello world"});
-});
-// router.get("/:id");
+router.get("/", controller.getAll);
 router.post("/",controller.create);
-// router.delete("/:id")
+router.put("/:name", controller.update);
 
 export default router;
