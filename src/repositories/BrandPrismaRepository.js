@@ -18,7 +18,18 @@ class BrandPrismaRepository extends IBrandRepository {
   async delete(id) {
     return await prisma.delete();
   }
-  async update(id) {}
+  async update(searchName, newName) {
+    const brand = await this.getByName(searchName);
+
+    if (!brand) {
+      throw new Error("The brand does not exists");
+    }
+
+    return await prisma.brand.update({
+      where: { id: brand.id },
+      data: { name: newName },
+    });
+  }
 
   async getByName(name) {
     return await prisma.brand.findFirst({

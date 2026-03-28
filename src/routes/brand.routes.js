@@ -5,5 +5,6 @@ const router = Router();
 
 router.post("/", controller.create);
 router.delete("/:name", controller.delete);
+router.put("/:name", controller.update);
 
 export default router;

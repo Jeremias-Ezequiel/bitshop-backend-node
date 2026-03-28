@@ -22,6 +22,15 @@ class BrandService {
     const result = await this.repository.deleteByName(name);
     return result;
   }
+
+  async updateBrand(searchName, newName) {
+    if (!searchName || !newName) {
+      throw new Error("Name is required");
+    }
+
+    const result = await this.repository.update(searchName, newName);
+    return result;
+  }
 }
 
 export default BrandService;
