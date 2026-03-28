@@ -48,6 +48,10 @@ class BrandPrismaRepository extends IBrandRepository {
 
     return await prisma.brand.delete({ where: { id: brand.id } });
   }
+
+  async getAll() {
+    return await prisma.brand.findMany();
+  }
 }
 
 export default BrandPrismaRepository;

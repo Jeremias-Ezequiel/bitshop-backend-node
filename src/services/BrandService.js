@@ -31,6 +31,10 @@ class BrandService {
     const result = await this.repository.update(searchName, newName);
     return result;
   }
+
+  async getAllBrand() {
+    return await this.repository.getAll();
+  }
 }
 
 export default BrandService;

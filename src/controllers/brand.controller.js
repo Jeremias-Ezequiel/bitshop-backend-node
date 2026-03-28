@@ -31,6 +31,15 @@ class BrandController {
       res.status(400).json({ status: "error", message: err.message });
     }
   };
+
+  index = async (req, res) => {
+    try {
+      const result = await service.getAllBrand();
+      res.status(200).json({ status: "success", data: result });
+    } catch (err) {
+      res.status(400).json({ status: "error", message: err.message });
+    }
+  };
 }
 
 export default new BrandController();
